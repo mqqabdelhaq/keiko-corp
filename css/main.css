@@ -789,6 +789,10 @@ footer .copyright a{
 /*		Responsive CSS 		*/
 
 @media (max-width: 360px) {
+
+	.hero{
+		background: url('../img/hero-mobile.jpg') no-repeat fixed center center;
+	}
 	.featured_on li{
 		display: block;
 		width: 100%;
