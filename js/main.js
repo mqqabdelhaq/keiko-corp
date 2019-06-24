@@ -1,5 +1,36 @@
 $(document).ready(function(){
 
+	/*!
+			Modified for brevity from https://github.com/filamentgroup/loadCSS
+			loadCSS: load a CSS file asynchronously.
+			[c]2014 @scottjehl, Filament Group, Inc.
+			Licensed MIT
+			*/
+
+			const styleArr = ["css/owl.transitions.css","css/owl.carousel.css","css/animate.css"];
+			for(let i=0;i<styleArr.length;i++)
+			{
+				loadCSS(styleArr[i]);
+			}
+			function loadCSS(href){
+			  var ss = window.document.createElement('link'),
+				  ref = window.document.getElementsByTagName('head')[0];
+	  
+			  ss.rel = 'stylesheet';
+			  ss.href = href;
+	  
+			  // temporarily, set media to something non-matching to ensure it'll
+			  // fetch without blocking render
+			  ss.media = 'only x';
+	  
+			  ref.parentNode.insertBefore(ss, ref);
+	  
+			  setTimeout( function(){
+				// set media back to `all` so that the stylesheet applies once it loads
+				ss.media = 'all';
+			  },0);
+			}
+
 	//Navigation menu scrollTo
 	$('header nav ul li a').click(function(event){
 		event.preventDefault();
@@ -17,13 +48,6 @@ $(document).ready(function(){
 		$(window).scrollTo({top:$("#hero").position().top, left:'0px'}, 1000);		
 	});
 
-
-
-
-
-
-
-
 	//Show & Hide menu on mobile
 	$('.burger_icon').click(function(){
 		$('header nav').toggleClass('show');
@@ -31,12 +55,6 @@ $(document).ready(function(){
 	});
 
 	
-
-
-
-
-
-
 	//wow.js on scroll animations initialization
 	wow = new WOW(
 	    {
@@ -46,24 +64,8 @@ $(document).ready(function(){
 		}
 	);
 	wow.init();
-
-
-
-
-
-
-
-
 	//parallax effect initialization
 	$('.hero').parallax("50%", 0.3);
-
-
-
-
-
-
-
-
 	//Nice scroll initialization
 	$("html").niceScroll({
 		scrollspeed: 50,
